@@ -101,6 +101,8 @@ public:
     std::vector<DeviceInfo> GetDeviceInfo(const PlatformIndex platform) const;
     DeviceInfo GetCurrentDeviceInfo() const;
 
+    std::string GetPtxSource(KernelId kernel_id, KernelDefinitionId id, const KernelConfiguration& configuration);
+
     // Logging
     static void SetLoggingLevel(const LoggingLevel level);
     static void SetLoggingTarget(std::ostream& target);

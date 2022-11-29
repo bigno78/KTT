@@ -516,4 +516,10 @@ std::unique_ptr<Deserializer> TunerCore::CreateDeserializer(const OutputFormat f
     }
 }
 
+std::string TunerCore::GetPtxSource(KernelId kernel_id, KernelDefinitionId id, const KernelConfiguration& configuration)
+{
+    const auto& kernel = m_KernelManager->GetKernel(kernel_id);
+    return m_KernelRunner->GetPtxSource(kernel, id, configuration);
+}
+
 } // namespace ktt

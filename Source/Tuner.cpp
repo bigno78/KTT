@@ -747,6 +747,19 @@ DeviceInfo Tuner::GetCurrentDeviceInfo() const
     }
 }
 
+std::string Tuner::GetPtxSource(KernelId kernel_id, KernelDefinitionId id, const KernelConfiguration& configuration)
+{
+    try
+    {
+        return m_Tuner->GetPtxSource(kernel_id, id, configuration);
+    }
+    catch (const KttException& exception)
+    {
+        TunerCore::Log(LoggingLevel::Error, exception.what());
+        return "";
+    }
+}
+
 void Tuner::SetLoggingLevel(const LoggingLevel level)
 {
     TunerCore::SetLoggingLevel(level);

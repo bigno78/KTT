@@ -75,6 +75,8 @@ public:
     virtual void SetKernelCacheCapacity(const uint64_t capacity) = 0;
     virtual void ClearKernelCache() = 0;
     virtual void EnsureThreadContext() = 0;
+
+    virtual std::string GetPtxSource(const KernelComputeData& /*data*/) { return ""; };
 };
 
 } // namespace ktt

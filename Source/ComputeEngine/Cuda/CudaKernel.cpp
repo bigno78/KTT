@@ -137,6 +137,11 @@ DimensionVector CudaKernel::AdjustGlobalSize(const DimensionVector& globalSize, 
     return result;
 }
 
+std::string CudaKernel::GetPtxSource() const
+{
+    return m_Program->GetPtxSource();
+}
+
 } // namespace ktt
 
 #endif // KTT_API_CUDA

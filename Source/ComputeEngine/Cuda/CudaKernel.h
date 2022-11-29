@@ -37,6 +37,8 @@ public:
     CUfunction GetKernel() const;
     CUmodule GetModule() const;
 
+    std::string GetPtxSource() const;
+
 private:
     std::string m_Name;
     std::unique_ptr<CudaProgram> m_Program;

@@ -356,4 +356,10 @@ const KernelComputeData& ComputeLayer::GetComputeData(const KernelDefinitionId i
     return GetData().GetComputeData(id);
 }
 
+std::string ComputeLayer::GetPtxSource(KernelDefinitionId id)
+{
+    const auto& data = GetComputeData(id);
+    return m_ComputeEngine.GetPtxSource(data);
+}
+
 } // namespace ktt

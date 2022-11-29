@@ -42,6 +42,8 @@ public:
     void RemoveKernelData(const KernelId id);
     void RemoveValidationData(const ArgumentId id);
 
+    std::string GetPtxSource(Kernel kernel, KernelDefinitionId id, const KernelConfiguration& configuration);
+
 private:
     std::unique_ptr<ComputeLayer> m_ComputeLayer;
     std::unique_ptr<ResultValidator> m_Validator;

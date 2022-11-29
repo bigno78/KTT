@@ -2,6 +2,7 @@
 
 #include <Api/KttException.h>
 #include <ComputeEngine/Cuda/CudaUtility.h>
+#include <iostream>
 
 namespace ktt
 {
@@ -9,7 +10,10 @@ namespace ktt
 std::string GetEnumName(const CUresult value)
 {
     const char* name;
-    cuGetErrorName(value, &name);
+    auto error = cuGetErrorName(value, &name);
+    if (error == CUDA_ERROR_DEINITIALIZED) {
+        std::cout << "It has been deintialized!!!!!!!\n";
+    }
     return name;
 }
 

@@ -225,7 +225,7 @@ KernelResult KernelRunner::RunKernelInternal(const Kernel& kernel, const KernelC
     catch (const KttException& exception)
     {
         Logger::LogWarning(std::string("Kernel run failed with reason: ") + exception.what());
-        
+
         m_ComputeLayer->SynchronizeDevice();
         m_ComputeLayer->ClearComputeEngineData();
 
@@ -298,6 +298,18 @@ ResultStatus KernelRunner::GetStatusFromException(const ExceptionReason reason)
         KttError("Unhandled value");
         return ResultStatus::ComputationFailed;
     }
+}
+
+std::string KernelRunner::GetPtxSource(Kernel kernel, KernelDefinitionId id, const KernelConfiguration& configuration)
+{
+    m_ComputeLayer->AddData(kernel, configuration, KernelRunMode::Running);
+    auto kernel_id = kernel.GetId();
+
+    auto activator = std::make_unique<KernelActivator>(*m_ComputeLayer, kernel_id);
+    std::string source = m_ComputeLayer->GetPtxSource(id);
+    m_ComputeLayer->ClearData(kernel_id);
+
+    return source;
 }
 
 } // namespace ktt

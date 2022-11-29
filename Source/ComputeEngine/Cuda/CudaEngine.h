@@ -90,6 +90,7 @@ public:
     void ClearKernelCache() override;
     void EnsureThreadContext() override;
 
+    std::string GetPtxSource(const KernelComputeData& data) override;
 private:
     EngineConfiguration m_Configuration;
     DeviceIndex m_DeviceIndex;

@@ -76,6 +76,8 @@ public:
     void ClearData(const KernelId id);
     KernelResult GenerateResult(const KernelId id, const Nanoseconds launcherDuration) const;
 
+    std::string GetPtxSource(KernelDefinitionId id);
+
 private:
     std::map<KernelId, std::unique_ptr<ComputeLayerData>> m_Data;
     ComputeEngine& m_ComputeEngine;

@@ -954,6 +954,12 @@ void CudaEngine::FillProfilingData(const KernelComputeId& id, ComputationResult&
 
 #endif // KTT_PROFILING_CUPTI_LEGACY
 
+std::string CudaEngine::GetPtxSource(const KernelComputeData& data)
+{
+    auto kernel = LoadKernel(data);
+    return kernel->GetPtxSource();
+}
+
 } // namespace ktt
 
 #endif // KTT_API_CUDA

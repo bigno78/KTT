@@ -723,6 +723,8 @@ public:
       */
     DeviceInfo GetCurrentDeviceInfo() const;
 
+    std::string GetPtxSource(KernelId kernel_id, KernelDefinitionId id, const KernelConfiguration& configuration);
+
      /** @fn static void SetLoggingLevel(const LoggingLevel level)
        * Sets logging level for tuner. Default logging level is info.
        * @param level Logging level which will be used by tuner. See ::LoggingLevel for more information.
